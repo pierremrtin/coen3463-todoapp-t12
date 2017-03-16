@@ -7,7 +7,6 @@ import { Segment, Divider } from 'semantic-ui-react'
 const Header = (props)=>{
     let s3 = {position: "relative", float: "right", top: "-17px"}
   	return(
-
 			<Segment>
                 {props.user.username}&nbsp;
                 <Divider fitted />  
