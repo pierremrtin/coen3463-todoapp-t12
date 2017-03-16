@@ -15,10 +15,12 @@ function TDItem(props){
             >
             <Form>
                 <Row>
-                    <Col md="1">
-                        <Container>
-                            <h4>{props.todo.name}</h4>
-                        </Container>
+                    <Col md="10">
+                        <List.Content floated="left" >
+                            <List.Header>
+                                <h3>{props.todo.name}</h3>
+                            </List.Header>
+                        </List.Content>
                     </Col>
                     <List floated="right" >
                         <Button size="small"  name="done"

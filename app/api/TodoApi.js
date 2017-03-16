@@ -37,6 +37,7 @@ var TodoApi = {
     },
     onEdit: (id,field,value)=>{
         console.log(value);
+        console.log('done')
         return axios.patch('/todo/'+id+'/'+field+'/'+value)
             .then(res=>{
                 return res;

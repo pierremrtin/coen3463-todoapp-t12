@@ -63,7 +63,8 @@ class ToDoCont extends React.Component{
                         this.setState({isLoading:false});
                     });
                 }else{
-                    this.context.router.push('/login/rd');
+                    console.log('user not found')
+                    this.context.router.push('/login');
                 }
             });
         }   
@@ -74,7 +75,8 @@ class ToDoCont extends React.Component{
         this.setState({isUpdating: true});
         let lastItemState = this.state.items;
         TodoApi.onDelete(todo._id).then(res=>{
-            if(res.data.success){                       
+            if(res.data.success){                  
+                console.log("item deleted")     
                 lastItemState.splice(index,1);
                 this.setState({
                     items: [...lastItemState],
@@ -107,6 +109,7 @@ class ToDoCont extends React.Component{
                 this.setState({ //update items
                     items :[...lastState,Object.assign({},res.data.response)]
                 });
+                console.log('Todo Added')
                 this.setState({isLoadingItem:false,count:this.state.count+1});
                 return;
             }
@@ -186,7 +189,6 @@ class ToDoCont extends React.Component{
             this.setState({isUpdating:false});
             this.setOpen(res);
         }).catch(err=>{
-             console.log(res.data.response);
         });
     }    
     handleClearList(e){
@@ -195,6 +197,7 @@ class ToDoCont extends React.Component{
         .then(res=>{
             console.log(res.data.todo)
             if(res.data.success){
+                console.log("clear completed")
                 this.setState({
                     items: [...res.data.todo],
                     isUpdating: false,

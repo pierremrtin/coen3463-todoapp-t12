@@ -49,7 +49,6 @@ router.post('/', (req,res)=>{
         });
         todo.save((err,todo)=>{
             if(err){
-                console.log("onerror save");
                 console.log(err)
                res.json({
                     success: false,
@@ -60,7 +59,7 @@ router.post('/', (req,res)=>{
             }
             user.todos.push(todo);
             user.save();
-            console.log("success");
+            console.log("todo saved");
             res.status(201).json({
                 success:true,
                 title: 'Success',

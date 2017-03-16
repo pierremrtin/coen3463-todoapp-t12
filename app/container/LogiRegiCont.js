@@ -58,12 +58,11 @@ class LogiRegiCont extends React.Component {
                     user: data.response._id
                 });
                 this.redirect(res.data.redirect);
+                console.log('login success')
                 return;
             }
             alert(res.data.response)
-        }).catch((err)=>{
-            alert('Error logging in');
-            throw(err);
+            console.log('login failed')
         });
        
     }
@@ -72,7 +71,7 @@ class LogiRegiCont extends React.Component {
         e.preventDefault();
         let elements = e.target.elements;
         if(elements[4].value>6){
-            alert("Your password must be at least 6 characters long. Please try another.");
+            alert("Password is too short. Please try another.");
             return;
         }
         let data={
@@ -85,7 +84,7 @@ class LogiRegiCont extends React.Component {
         AuthApi.onRegister(data).then((res)=>{
             console.log(res.data.redirect); //access data here //check the console
             if(res.data.success===false){
-                console.log(res.data.response.message);
+                alert(res.data.response.message);
                 return; 
             }
             window.location = res.data.redirect;

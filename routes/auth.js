@@ -10,7 +10,7 @@ router.post('/login', function(req, res, next) {
       response: err
     });
     if (user === false) {
-      console.log("failed")
+      console.log("Login failed")
       res.json({
         success: false,
         title: 'Error',
@@ -24,7 +24,9 @@ router.post('/login', function(req, res, next) {
             response:err
           });
           console.log(req.user);
+          console.log("Login sucess")
           res.status(200).json({
+
             success: true,
             title: 'Success',
             response: user,

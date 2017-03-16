@@ -32,7 +32,7 @@ const AuthApi = {
     onLogout:()=>{
         axios.post('/auth/logout').
         then(res=>{
-            console.log(res);
+            console.log("logout");
             browserHistory.push(res.data.redirect);
         }).catch(err=>{
             throw(err);
